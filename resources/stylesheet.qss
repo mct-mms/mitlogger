@@ -1,0 +1,55 @@
+MainWindow
+{
+    background-color: #2D142C;
+}
+
+QMenuBar
+{
+    background-color: #801336;
+    color: #FFFFFF;
+}
+
+QMenu
+{
+    background-color: #510A32;
+    color: #FFFFFF;
+}
+
+QLabel[accessibleName="label1"],
+QLabel[accessibleName="label2"],
+QLabel[accessibleName="label3"],
+QLabel[accessibleName="label4"]
+{
+    background-color: #C72C41;
+    color: #FFFFFF;
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+    text-align:center;
+    qproperty-wordWrap: true;
+    qproperty-alignment: AlignCenter;
+    border: 2px solid;
+}
+
+QLabel[accessibleName="label1"]
+{
+    background-color: #8FB9A8;
+    color: #FFFFFF;
+}
+
+
+QPushButton[accessibleName="LoginButton"]
+{
+    background-color: #305F72;
+    color: #FFFFFF;
+    font-family: Arial;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+
+QStatusBar
+{
+    background-color: #C72C41;
+    color: #FFFFFF;
+}

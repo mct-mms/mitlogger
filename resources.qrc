@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/logo.png</file>
+        <file>resources/icons/arrived.png</file>
+        <file>resources/icons/left.png</file>
+        <file>style/style.css</file>
+        <file>resources/icons/pause.png</file>
+        <file>resources/icons/play.png</file>
+        <file>resources/icons/stop.png</file>
+        <file>resources/icons/playpause.png</file>
+        <file>resources/icons/power.png</file>
+        <file>resources/icons/settings.png</file>
+        <file>resources/icons/secure.png</file>
+        <file>resources/icons/id-card.png</file>
+        <file>resources/icons/office.png</file>
+        <file>resources/icons/fulllogo.jpg</file>
+    </qresource>
+</RCC>

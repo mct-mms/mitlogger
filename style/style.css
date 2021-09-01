@@ -1,0 +1,104 @@
+MainWindow
+{
+    background-color: #F1F1F1;
+}
+
+QMenuBar
+{
+    background-color: #1c4e80;
+    color: #FFFFFF;
+}
+QToolBar
+{
+    background-color: #FEFAD4;
+}
+
+
+
+QLabel[accessibleName="hoursLabel"],
+QLabel[accessibleName="minutesLabel"]
+{
+/*    background-color: #C72C41;*/
+    color: #1c4e80;
+    font-family: Arial;
+    font-size: 40px;
+    font-weight: bold;
+    text-align:center;
+    qproperty-wordWrap: true;
+    qproperty-alignment: AlignCenter;
+    border: 2px solid;
+    border-radius: 20px;
+}
+
+QLabel[accessibleName="HoursLabel"],
+QLabel[accessibleName="MinutesLabel"]
+{
+/*    background-color: #282E3A;*/
+    color: #1c4e80;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: normal;
+    text-align:center;
+    qproperty-wordWrap: true;
+    qproperty-alignment: AlignCenter;
+    border: 1px solid;
+    border-color: #1c4e80;
+    border-radius: 20px;
+    max-height: 20px;
+}
+
+QGroupBox
+{
+    background-color: #ffffff;
+}
+
+QGroupBox[accessibleName="mainGroupBox"]
+{
+    background-color: #F1F1F1;
+    border-radius: 20px;
+}
+
+QTableWidget[accessibleName = "hoursChartsWidget"]
+{
+background-color: #1c4e80;
+
+}
+
+QChartView
+{
+    background-color: #1c4e80;
+    padding: 1px;
+}
+
+QChart
+{
+    background-color: #f5a742;
+}
+
+QTableView
+{
+/*    selection-background-color: #1c4e80;*/
+
+    color: #1c4e80;
+    border: 1px solid #1c4e80;
+    background: #FFFFFF;
+    gridline-color: #1c4e80;
+}
+QTableWidget::item
+{
+/*    background-color: #1c4e80;*/
+
+}
+QTableWidget::item:selected
+{
+    background-color: #bdcbdb;
+    color: #011329;
+}
+
+QHeaderView::section
+{
+    background-color: #1c4e80;
+    color: white;
+    border: none;
+    height: 32px;
+}
