@@ -12,6 +12,7 @@ CONFIG += c++11
 SOURCES += \
     databasehandler.cpp \
     infodialog.cpp \
+    loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
     taskstable.cpp \
@@ -23,6 +24,7 @@ SOURCES += \
 HEADERS += \
     databasehandler.h \
     infodialog.h \
+    loginwindow.h \
     mainwindow.h \
     taskstable.h \
     telegramhandler.h \
@@ -31,6 +33,7 @@ HEADERS += \
 
 FORMS += \
     infodialog.ui \
+    loginwindow.ui \
     mainwindow.ui
 
 

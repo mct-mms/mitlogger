@@ -14,5 +14,7 @@
         <file>resources/icons/id-card.png</file>
         <file>resources/icons/office.png</file>
         <file>resources/icons/fulllogo.jpg</file>
+        <file>style/login.css</file>
+        <file>resources/icons/fulllogo.png</file>
     </qresource>
 </RCC>

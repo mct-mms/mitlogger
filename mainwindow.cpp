@@ -12,28 +12,21 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    //--------------------------------------------------------------------------- Window Settings
 
+    //---------------------------------------------- Window Customization
+    this->setWindowTitle("MIT WorkLogger");
+    this->setWindowIcon(QIcon(":/resources/logo.png"));
+    this->setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
 
-    //---------------------------------------------------------------------------
-    bot = new telegramHandler(); //Initialization of Telegram Bot
+    //---------------------------------------------- Program Stylesheet
+    QFile File(":/style/style.css");
+    File.open(QIODevice::ReadOnly);
+    QString style( File.readAll() );
+    this->setStyleSheet(style);
 
-
-    //---------------------------------------------------------------------------
-//    WeeklyHoursChart* WeeklyChart = new WeeklyHoursChart(this);
-//    WeeklyChart->setUserName("Mohamed Saad");
-//    WeeklyChart->setData( {5,8,8,10,6,7,8,7,6,5,5,8,8,10,6,7,8,7,6,5,5,8,8,10,6,7,8,7,6,5} ); //Adding data hours
-
-//    ui->performanceTabWidget->removeTab(0);
-//    ui->performanceTabWidget->insertTab( 0 , WeeklyChart->chartView , "Last 30 Days working hours");
-
-
-    //---------------------------------------------------------------------------
-    EmployeeTasks = new TasksTable(this);
-    ui->TasksWidget->removeTab(0);
-    ui->TasksWidget->insertTab(0 , EmployeeTasks->m_pTableWidget , "Today Tasks");
-    ui->TasksWidget->setCurrentIndex(0);
-
-    //--------------------------------------------------------------------------- Logo Setting
+    //-------------------------------------------------------------------------- Left Info Panel settings
+    //--------------------------------------------- Logo Setting
     QLabel label;
     QPixmap pixmap(":/resources/icons/fulllogo.jpg");
     ui->companyLogo->setPixmap(pixmap);
@@ -44,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent)
     // set a scaled pixmap to a w x h window keeping its aspect ratio
     ui->companyLogo->setPixmap( pixmap.scaled(w,h,Qt::KeepAspectRatio) );
 
-    //---------------------------------------------------------------------------
+    //---------------------------------------------- Info Labels
     //# get the palette
     QPalette palette1 = ui->todayHoursLabel->palette();
     QPalette palette2 = ui->todayMinutesLabel->palette();
@@ -62,7 +55,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->todayMinutesLabel->setPalette(palette2);
     ui->weekHoursLabel->setPalette(palette3);
     ui->weekMinutesLabel->setPalette(palette4);
-    //---------------------------------------------------------------------------
+
+    //#Aligning labels texts
     ui->HoursLabel->setAlignment( Qt::AlignHCenter );
     ui->HoursLabel_2->setAlignment( Qt::AlignHCenter );
     ui->MinutesLabel->setAlignment( Qt::AlignHCenter );
@@ -71,20 +65,32 @@ MainWindow::MainWindow(QWidget *parent)
     ui->titleLabel->setAlignment( Qt::AlignHCenter );
     ui->teamLabel->setAlignment( Qt::AlignHCenter );
 
+
+    //-------------------------------------------------------------------------- Telegram settings
+
+    bot = new telegramHandler(); //Initialization of Telegram Bot
+
+
+    //-------------------------------------------------------------------------- Today Progress section
+    EmployeeTasks = new TasksTable(this);
+    ui->TasksWidget->removeTab(0);
+    ui->TasksWidget->insertTab(0 , EmployeeTasks->m_pTableWidget , "Today Tasks");
+    ui->TasksWidget->setCurrentIndex(0);
+
+
     //--------------------------------------------------------------------------- Firebase Section
-    databaseHandler DB;
+//    databaseHandler DB2;
 
 //    QVariantMap DATA;
-//    DATA["name"] = "Mohamed Saad";
+//    DATA["name"] = "Mohamed Saad22";
 //    DATA["mainteam"] = "Electronics";
 //    DATA["userrole"] = "admin";
 //    DATA["title"] = "Software Engineer";
 //    DATA["username"] = "msaad";
 //    DATA["password"] = "456789";
-//    DB.pushData( "employees",DATA );
+//    DB2.pushData( "employees",DATA );
 
 
-    DB.readData( "employees" , &fetchedDataPrint );
 
 
 }
@@ -94,12 +100,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void fetchedDataPrint( QString in )
-{
-
-    qDebug() << "Firebase Read Start: \n " << in << "End: \n " ;
-
-}
 
 
 void MainWindow::on_actionChange_password_triggered()
@@ -144,8 +144,6 @@ void MainWindow::on_actionStart_from_home_triggered()
 
     bot->sendChannelMessage(MessageForm);
 }
-
-
 
 
 void MainWindow::on_actionPause_working_triggered()
@@ -244,7 +242,6 @@ void MainWindow::on_actionStopped_from_home_triggered()
 
     bot->sendChannelMessage(MessageForm); //Send the message to the telegram
 }
-
 
 
 void MainWindow::on_addTaskButton_clicked()

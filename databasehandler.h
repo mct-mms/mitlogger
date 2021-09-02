@@ -22,10 +22,9 @@ public:
 private:
     QNetworkAccessManager* m_networkManager;
     QNetworkReply* m_networkReply;
-    QString DB_PATH = "https://mitlogger-fb1b8-default-rtdb.europe-west1.firebasedatabase.app/";
+    QString DB_PATH = "https://mitlogger-aa08f-default-rtdb.europe-west1.firebasedatabase.app/";
 
 public slots:
-//    void networkReplyReadyRead(  void (*func)(QString DATA)  );
 
 
 signals:

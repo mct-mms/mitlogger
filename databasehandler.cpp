@@ -5,13 +5,13 @@
 
 databaseHandler::databaseHandler(QObject *parent) : QObject(parent)
 {
-    m_networkManager = new QNetworkAccessManager(this);
+    m_networkManager = new QNetworkAccessManager(parent);
 
 //    m_networkReply = m_networkManager->get(
 //                    QNetworkRequest(
-//                    QUrl("https://mitlogger-fb1b8-default-rtdb.europe-west1.firebasedatabase.app/empolyees.json")) );
+//                    QUrl("https://mitlogger-fb1b8-default-rtdb.europe-west1.firebasedatabase.app/employees.json")) );
 
-//    connect( m_networkReply , &QNetworkReply::readyRead , this ,&databaseHandler::networkReplyReadyRead );
+//    connect( m_networkReply , &QNetworkReply::readyRead , this ,[=](){ qDebug()<< m_networkReply->readAll(); } );
 
 }
 
@@ -27,6 +27,9 @@ void databaseHandler::pushData(QString path, QVariantMap data)
     QNetworkRequest newRequest( QUrl( DB_PATH + path + ".json" ) ); //Path to the DB storing location
 
     newRequest.setHeader( QNetworkRequest::ContentTypeHeader , QString("application/json") ); //Define Json datatype
+
+    qDebug() << "pushData at : " + DB_PATH + path + ".json" ;
+
 
     m_networkManager->post( newRequest , jsonData.toJson() ); //Adding Data
 
@@ -44,8 +47,4 @@ void databaseHandler::readData(QString path , void (*callBackFunc)(QString DATA)
 
 }
 
-//void databaseHandler::networkReplyReadyRead( void (*func)(QString DATA) )
-//{
-////    qDebug()<< m_networkReply->readAll();
-//    func( m_networkReply->readAll() );
-//}
+

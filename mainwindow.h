@@ -14,7 +14,7 @@
 #include <QSslSocket> //To use QSslSocket Class
 
 #include <databasehandler.h>
-#include "TasksTable.h"
+#include "taskstable.h"
 #include "telegramhandler.h"
 #include "infodialog.h"
 
@@ -42,6 +42,7 @@ public:
     QString currentUserSubTeam = "GUI";
     QString TodayDate = "30 Aug";
     QString currentTime = "11:15AM";
+
 
 
 

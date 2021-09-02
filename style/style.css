@@ -102,3 +102,17 @@ QHeaderView::section
     border: none;
     height: 32px;
 }
+
+QProgressBar
+{
+    border: 2px solid grey;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 12px;
+}
+
+QProgressBar::chunk
+{
+    background-color: #188C89;
+    width: 20px;
+}
