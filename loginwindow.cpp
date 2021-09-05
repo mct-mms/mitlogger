@@ -12,7 +12,7 @@ void fetchedUserData( QString in );
 
 
 LoginWindow::LoginWindow(QWidget *parent) :
-    QWidget(parent),
+    QDialog(parent),
     ui(new Ui::LoginWindow)
 {
     ui->setupUi(this);
@@ -44,7 +44,7 @@ LoginWindow::LoginWindow(QWidget *parent) :
 
 
     //--------------------------------------------------------------------------- Firebase Section
-    databaseHandler DB;
+//    databaseHandler DB;
 
 //    QVariantMap DATA;
 //    DATA["name"] = "Mohamed Saad";
@@ -56,7 +56,7 @@ LoginWindow::LoginWindow(QWidget *parent) :
 //    DB.pushData( "employees",DATA );
 
 
-    DB.readData( "employees/-MiaabeuQD2c0gL32nLB" , &fetchedUserData );
+//    DB.readData( "employees/-MiaabeuQD2c0gL32nLB" , &fetchedUserData );
 
 
 
@@ -73,12 +73,18 @@ void LoginWindow::on_pushButton_clicked()
     QString enteredUser;
     QString enteredPassword;
 
-    MainWindow* w = new MainWindow(); //Select the default Class for the startup window
 
-    this->getUserInfo( "mohamedsaa3d" , "password");
+//    this->getUserInfo( "mohamedsaa3d" , "password");
 
-    w->show();
-    this->hide();
+    this->done(QDialog::Accepted);
+
+//    this->close();
+
+
+//    MainWindow* w = new MainWindow(); //Select the default Class for the startup window
+
+//    w->show();
+//    this->hide();
 
 }
 
@@ -99,13 +105,19 @@ void LoginWindow::getUserInfo(QString username, QString password)
 
     qDebug() << "login clicked started \n" ;
 
-    DB->readData( "employees" , &fetchedUserData );
+//    DB->readData( "employees" , &fetchedUserData );
 
 
     QVariantMap DATA;
     DATA[".sv"] = "timestamp"; //Push Timestamp
 
-    DB->pushData("timestamp", DATA );
+//    DB->pushData("timestamp", DATA );
+    DB->putData("timestamp/value", DATA );
+
+    DB->pushData("fromLogin", DATA );
+
+
+//    DB->removeData("testt" );
 
 
 }

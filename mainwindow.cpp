@@ -3,8 +3,7 @@
 #include "todaybasehourschart.h"
 #include "weeklyhourschart.h"
 
-void fetchedDataPrint( QString in );
-
+void fetchedUserData( QString in );
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -79,7 +78,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     //--------------------------------------------------------------------------- Firebase Section
-//    databaseHandler DB2;
+//    DB = new databaseHandler(this);
 
 //    QVariantMap DATA;
 //    DATA["name"] = "Mohamed Saad22";
@@ -88,7 +87,7 @@ MainWindow::MainWindow(QWidget *parent)
 //    DATA["title"] = "Software Engineer";
 //    DATA["username"] = "msaad";
 //    DATA["password"] = "456789";
-//    DB2.pushData( "employees",DATA );
+//    DB->pushData( "zz",DATA );
 
 
 
@@ -98,6 +97,34 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::clickedArrive()
+{
+    qDebug() << "clickedArrive()";
+
+    databaseHandler* DB = new databaseHandler();
+//    QEventLoop loop;
+
+
+
+
+    QVariantMap DATA;
+    DATA[".sv"] = "timestamp"; //Add Timestamp
+    DATA["type"] = "arrive_office";
+    DATA["fullname"] = currentUserFullName;
+    DATA["username"] = currentUsername;
+    DATA["mainteam"] = currentUserMainTeam;
+    DATA["subteam"] = currentUserSubTeam;
+
+//    DB->readData( "employees" , &fetchedUserData );
+
+    DB->pushData("fromArrive", DATA );
+//    DB->readData( "employees" , &fetchedUserData );
+
+//    loop.exec();
+
+
 }
 
 
@@ -124,6 +151,23 @@ void MainWindow::on_actionArrived_office_triggered()
     MessageForm.append( currentUserFullName ).append(" | ").append(ArrivedEmoj).append(" Arrived Office"); // "%0A" is a new line
 
     bot->sendChannelMessage(MessageForm);
+
+    this->clickedArrive();
+
+//    databaseHandler* DB = new databaseHandler();
+
+
+//    QVariantMap DATA;
+//    DATA[".sv"] = "timestamp"; //Add Timestamp
+//    DATA["type"] = "arrive_office";
+//    DATA["fullname"] = currentUserFullName;
+//    DATA["username"] = currentUsername;
+//    DATA["mainteam"] = currentUserMainTeam;
+//    DATA["subteam"] = currentUserSubTeam;
+
+////    DB->readData( "employees" , &fetchedUserData );
+
+//    DB->pushData("fromArrive", DATA );
 }
 
 
@@ -143,6 +187,16 @@ void MainWindow::on_actionStart_from_home_triggered()
     MessageForm.append( currentUserFullName ).append(" | ").append(ArrivedEmoj).append(" Started from home"); // "%0A" is a new line
 
     bot->sendChannelMessage(MessageForm);
+
+    QVariantMap DATA;
+    DATA[".sv"] = "timestamp"; //Add Timestamp
+    DATA["type"] = "home_start";
+    DATA["fullname"] = currentUserFullName;
+    DATA["username"] = currentUsername;
+    DATA["mainteam"] = currentUserMainTeam;
+    DATA["subteam"] = currentUserSubTeam;
+
+//    DB->pushData("attendancelog", DATA );
 }
 
 
@@ -163,6 +217,16 @@ void MainWindow::on_actionPause_working_triggered()
 
     bot->sendChannelMessage(MessageForm);
 
+    QVariantMap DATA;
+    DATA[".sv"] = "timestamp"; //Add Timestamp
+    DATA["type"] = "pause";
+    DATA["fullname"] = currentUserFullName;
+    DATA["username"] = currentUsername;
+    DATA["mainteam"] = currentUserMainTeam;
+    DATA["subteam"] = currentUserSubTeam;
+
+//    DB->pushData("attendancelog", DATA );
+
 }
 
 
@@ -182,6 +246,16 @@ void MainWindow::on_actionResumed_working_triggered()
     MessageForm.append( currentUserFullName ).append(" | ").append(ArrivedEmoj).append(" Resumed Working"); // "%0A" is a new line
 
     bot->sendChannelMessage(MessageForm);
+
+    QVariantMap DATA;
+    DATA[".sv"] = "timestamp"; //Add Timestamp
+    DATA["type"] = "resume";
+    DATA["fullname"] = currentUserFullName;
+    DATA["username"] = currentUsername;
+    DATA["mainteam"] = currentUserMainTeam;
+    DATA["subteam"] = currentUserSubTeam;
+
+//    DB->pushData("attendancelog", DATA );
 }
 
 
@@ -201,6 +275,16 @@ void MainWindow::on_actionLeft_office_triggered()
     MessageForm.append( currentUserFullName ).append(" | ").append(ArrivedEmoj).append(" Left Office"); // "%0A" is a new line
 
     bot->sendChannelMessage(MessageForm);
+
+    QVariantMap DATA;
+    DATA[".sv"] = "timestamp"; //Add Timestamp
+    DATA["type"] = "office_left";
+    DATA["fullname"] = currentUserFullName;
+    DATA["username"] = currentUsername;
+    DATA["mainteam"] = currentUserMainTeam;
+    DATA["subteam"] = currentUserSubTeam;
+
+//    DB->pushData("attendancelog", DATA );
 
 }
 
@@ -241,6 +325,16 @@ void MainWindow::on_actionStopped_from_home_triggered()
 
 
     bot->sendChannelMessage(MessageForm); //Send the message to the telegram
+
+    QVariantMap DATA;
+    DATA[".sv"] = "timestamp"; //Add Timestamp
+    DATA["type"] = "home_stop";
+    DATA["fullname"] = currentUserFullName;
+    DATA["username"] = currentUsername;
+    DATA["mainteam"] = currentUserMainTeam;
+    DATA["subteam"] = currentUserSubTeam;
+
+//    DB->pushData("timestamp", DATA );
 }
 
 

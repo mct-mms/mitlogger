@@ -15,7 +15,15 @@ public:
     ~databaseHandler();
 
     void pushData( QString path , QVariantMap data );
+
+    void putData( QString path , QVariantMap data );
+
     void readData ( QString path , void (*callBackFunc)(QString DATA) );
+
+    void removeData( QString path );
+
+
+
 
 
 
@@ -25,7 +33,7 @@ private:
     QString DB_PATH = "https://mitlogger-aa08f-default-rtdb.europe-west1.firebasedatabase.app/";
 
 public slots:
-
+    void onRequestCompleted(QNetworkReply* reply);
 
 signals:
 

@@ -34,6 +34,8 @@ public:
     telegramHandler* bot;
 
     TasksTable* EmployeeTasks;
+//    databaseHandler* DB;
+
 
 
     QString currentUsername = "M.saad";
@@ -43,8 +45,7 @@ public:
     QString TodayDate = "30 Aug";
     QString currentTime = "11:15AM";
 
-
-
+    void clickedArrive();
 
 
 private slots:
