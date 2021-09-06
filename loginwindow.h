@@ -3,6 +3,11 @@
 
 #include <QDialog>
 #include <QWidget>
+#include <QFile>
+#include <QIcon>
+#include <QVariantMap>
+#include "databasehandler.h"
+
 
 namespace Ui {
 class LoginWindow;
@@ -15,6 +20,8 @@ class LoginWindow : public QDialog
 public:
     explicit LoginWindow(QWidget *parent = nullptr);
     ~LoginWindow();
+    QString enteredUsername;
+    QString enteredPassword;
 
     void getUserInfo( QString username , QString password );
 
@@ -24,6 +31,7 @@ private slots:
 
 private:
     Ui::LoginWindow *ui;
+
 };
 
 #endif // LOGINWINDOW_H

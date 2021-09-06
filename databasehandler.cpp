@@ -41,7 +41,7 @@ void databaseHandler::pushData(QString path, QVariantMap data)
     QEventLoop loop;
     QTimer getTimer; // let's use a 10 second period for timing out the GET opn
 
-    QTimer::connect(&getTimer,SIGNAL(timeout()),&loop, SLOT(quit()));
+    QTimer::connect(&getTimer,SIGNAL(timeout()),&loop, SLOT(quit())); //Connect timeout
     QObject::connect(m_networkManager, SIGNAL(finished(QNetworkReply*)),&loop, SLOT(quit()));
 
     m_networkManager->post( newRequest , jsonData.toJson() ); //Adding Data

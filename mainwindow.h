@@ -46,6 +46,7 @@ public:
     QString currentTime = "11:15AM";
 
     void clickedArrive();
+    void addEmployee(void);
 
 
 private slots:

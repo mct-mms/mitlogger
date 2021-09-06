@@ -23,26 +23,26 @@ int main(int argc, char *argv[])
 
        QApplication a(argc, argv);
 
-       MainWindow* MainWindowPage = new MainWindow();
+//       MainWindow* MainWindowPage = new MainWindow();
 
-       MainWindowPage->show();
+//       MainWindowPage->show();
 
-//       LoginWindow *LoginDialog = new LoginWindow();
+       LoginWindow *LoginDialog = new LoginWindow();
 
-//       LoginDialog->setWindowFlags(Qt::Window);
+       LoginDialog->setWindowFlags(Qt::Window);
 
 
-//       if(LoginDialog->exec() == QDialog::Accepted)
-//       {
-//           MainWindow* MainWindowPage = new MainWindow();
+       if(LoginDialog->exec() == QDialog::Accepted)
+       {
+           MainWindow* MainWindowPage = new MainWindow();
 
 //           MainWindowPage->DB = new databaseHandler();
 
 
-//           MainWindowPage->show();
-//       }
+           MainWindowPage->show();
+       }
 
-//       LoginDialog->deleteLater();
+       LoginDialog->deleteLater();
 
        return a.exec();
 
@@ -50,23 +50,3 @@ int main(int argc, char *argv[])
 
 }
 
-
-
-/*
- *
- *  QApplication a(argc, argv);
-
-    SecDialog *SecDialogPage = new SecDialog();
-    SecDialogPage->setWindowFlags(Qt::Window);
-
-    if(SecDialogPage->exec() == QDialog::Accepted)
-    {
-        MainWindow *MainWindowPage = new MainWindow();
-        MainWindowPage->showMaximized();
-    }
-
-    SecDialogPage->deleteLater();
-
-    return a.exec();
- *
- */

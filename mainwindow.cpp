@@ -117,14 +117,29 @@ void MainWindow::clickedArrive()
     DATA["mainteam"] = currentUserMainTeam;
     DATA["subteam"] = currentUserSubTeam;
 
-//    DB->readData( "employees" , &fetchedUserData );
+    DB->readData( "employees" , &fetchedUserData );
 
     DB->pushData("fromArrive", DATA );
-//    DB->readData( "employees" , &fetchedUserData );
-
-//    loop.exec();
 
 
+
+}
+
+void MainWindow::addEmployee()
+{
+        databaseHandler* DB = new databaseHandler(this);
+
+        QVariantMap DATA;
+        DATA["name"] = "Mohamed Saad";
+        DATA["mainteam"] = "Electronics";
+        DATA["userrole"] = "admin";
+        DATA["title"] = "Software Engineer";
+        DATA["username"] = "msaad";
+        DATA["password"] = "456789";
+
+        //    DATA[".sv"] = "timestamp"; //Push Timestamp
+
+        DB->pushData( "employees",DATA );
 }
 
 
@@ -418,4 +433,56 @@ void MainWindow::on_deleteTaskButton_clicked()
 
 
 }
+
+void fetchedUserData(QString in)
+{
+       qDebug() << "Fetched User Data: \n " << in << "End: \n " ;
+
+       QJsonDocument doc = QJsonDocument::fromJson(in.toUtf8());
+       QJsonObject json = doc.object();
+
+       QJsonArray jsonArray;
+
+       foreach(const QString& key, json.keys())
+       {
+           qDebug() << "KEY: " << key << "\n";
+
+           QJsonObject Obj = json.value(key).toObject();
+           jsonArray.push_back(Obj);
+       }
+
+
+       // TO ACCESS YOUR ARRAY
+
+       for(int i = 0; i<jsonArray.size(); i++)
+       {
+
+           QJsonObject child = jsonArray.at(i).toObject();
+
+           qDebug() << "child: "    << child << "\n";
+
+           qDebug() << "Key: "    << json.keys()[0] << "\n";
+
+
+           qDebug() << "name: "     << child.value("name").toString()      << "\n";
+           qDebug() << "title: "    << child.value("title").toString()      << "\n";
+           qDebug() << "mainteam: " << child.value("mainteam").toString()  << "\n";
+           qDebug() << "username: " << child.value("username").toString()      << "\n";
+           qDebug() << "password: " << child.value("password").toString()      << "\n";
+           qDebug() << "userrole: " << child.value("userrole").toString()      << "\n";
+
+       }
+
+       if(true)
+       {
+//            this.done(QDialog::Accepted);
+       }
+       else
+       {
+
+       }
+
+}
+
+
 
